@@ -17,5 +17,16 @@ module.exports = {
   ],
   'rules': {
     'new-cap': 0,
+    'max-len': [
+      'error',
+      {
+        'code': 120,
+        'tabWidth': 2,
+        'ignoreComments': true,
+        'ignoreUrls': true,
+        'ignoreStrings': true,
+        'ignoreTemplateLiterals': true,
+      },
+    ],
   },
 };
