@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {AuthService} from '../../../services/auth/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -12,9 +13,19 @@ export class HeaderComponent {
   isLoggedIn: boolean = false;
 
   /**
+   * Standard constructor.
+   * @param {AuthService} authService used to authenticate
+   */
+  constructor(private authService: AuthService) {
+    this.authService.getIsLoggedIn().subscribe((isLoggedIn) => {
+      this.isLoggedIn = isLoggedIn;
+    });
+  }
+
+  /**
    * Method to perform logout functionality.
    */
   doLogout() {
-    console.log('doLogout() called...');
+    this.authService.logout(true);
   }
 }

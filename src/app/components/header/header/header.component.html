@@ -31,22 +31,12 @@
           <a class="nav-link disabled">Disabled</a>
         </li>
       </ul>
-      <ul *ngIf="isLoggedIn">
-        <li class="nav-item dropdown">
-          <a aria-expanded="false" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button">
-            Account
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" routerLink="/profile">Profile</a></li>
-            <li>
-              <button (click)="doLogout()" class="dropdown-item">Logout</button>
-            </li>
-          </ul>
-        </li>
-      </ul>
       <div *ngIf="!isLoggedIn">
-        <button class="btn btn-outline-info" id="registerButton" routerLink="/register">Register</button>
-        <button class="btn btn-info" routerLink="/login">Login</button>
+        <button class="btn btn-outline-secondary" id="registerButton" routerLink="/register">Register</button>
+        <button class="btn btn-secondary" routerLink="/login">Login</button>
+      </div>
+      <div *ngIf="isLoggedIn">
+        <button (click)="doLogout()" class="btn btn-danger">Logout</button>
       </div>
     </div>
   </div>
