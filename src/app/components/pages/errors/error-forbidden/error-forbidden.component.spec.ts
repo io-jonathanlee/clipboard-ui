@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ErrorForbiddenComponent } from './error-forbidden.component';
+import {ErrorForbiddenComponent} from './error-forbidden.component';
 
 describe('ErrorForbiddenComponent', () => {
   let component: ErrorForbiddenComponent;
@@ -8,9 +8,9 @@ describe('ErrorForbiddenComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ErrorForbiddenComponent ]
+      declarations: [ErrorForbiddenComponent],
     })
-    .compileComponents();
+        .compileComponents();
 
     fixture = TestBed.createComponent(ErrorForbiddenComponent);
     component = fixture.componentInstance;
