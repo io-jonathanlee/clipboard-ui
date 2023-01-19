@@ -17,6 +17,8 @@ import {
 import {ViewDeliveriesComponent} from './components/pages/deliveries/view-deliveries/view-deliveries.component';
 import {LandingPageComponent} from './components/pages/landing-page/landing-page.component';
 import {AdminPanelComponent} from './components/pages/admin-panel/admin-panel.component';
+import {ViewOrdersComponent} from "./components/pages/orders/view-orders/view-orders.component";
+import {ViewSuppliersComponent} from "./components/pages/suppliers/view-suppliers/view-suppliers.component";
 
 export const appRoutes: Routes = [
   {path: '', component: LandingPageComponent},
@@ -27,6 +29,8 @@ export const appRoutes: Routes = [
   {path: 'password/reset', component: PasswordResetComponent},
   {path: 'organizations/memberships', component: ViewOrganizationsWhereMemberComponent, canActivate: [AuthGuard]},
   {path: 'organizations/view', component: ViewOrganizationComponent, canActivate: [AuthGuard]},
+  {path: 'orders', component: ViewOrdersComponent, canActivate: [AuthGuard]},
+  {path: 'suppliers', component: ViewSuppliersComponent, canActivate: [AuthGuard]},
   {path: 'deliveries', component: ViewDeliveriesComponent, canActivate: [AuthGuard]},
   {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
   {path: 'admin-panel', component: AdminPanelComponent, canActivate: [AuthGuard]},

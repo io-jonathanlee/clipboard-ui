@@ -16,12 +16,18 @@ import {HomeComponent} from './components/pages/home/home.component';
 import {ProfileComponent} from './components/pages/users/profile/profile.component';
 import {CookieService} from 'ngx-cookie-service';
 import {PasswordResetComponent} from './components/pages/users/password-reset/password-reset.component';
-import { RegisterConfirmComponent } from './components/pages/users/register-confirm/register-confirm.component';
-import { ViewOrganizationsWhereMemberComponent } from './components/pages/organizations/view-organizations-where-member/view-organizations-where-member.component';
-import { ViewOrganizationComponent } from './components/pages/organizations/view-organization/view-organization.component';
-import { ViewDeliveriesComponent } from './components/pages/deliveries/view-deliveries/view-deliveries.component';
-import { LandingPageComponent } from './components/pages/landing-page/landing-page.component';
-import { AdminPanelComponent } from './components/pages/admin-panel/admin-panel.component';
+import {RegisterConfirmComponent} from './components/pages/users/register-confirm/register-confirm.component';
+import {
+  ViewOrganizationsWhereMemberComponent
+} from './components/pages/organizations/view-organizations-where-member/view-organizations-where-member.component';
+import {
+  ViewOrganizationComponent
+} from './components/pages/organizations/view-organization/view-organization.component';
+import {ViewDeliveriesComponent} from './components/pages/deliveries/view-deliveries/view-deliveries.component';
+import {LandingPageComponent} from './components/pages/landing-page/landing-page.component';
+import {AdminPanelComponent} from './components/pages/admin-panel/admin-panel.component';
+import {ViewSuppliersComponent} from './components/pages/suppliers/view-suppliers/view-suppliers.component';
+import {ViewOrdersComponent} from './components/pages/orders/view-orders/view-orders.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +47,8 @@ import { AdminPanelComponent } from './components/pages/admin-panel/admin-panel.
     ViewDeliveriesComponent,
     LandingPageComponent,
     AdminPanelComponent,
+    ViewSuppliersComponent,
+    ViewOrdersComponent,
   ],
   imports: [
     BrowserModule,

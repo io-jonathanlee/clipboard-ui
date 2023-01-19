@@ -1,68 +1,67 @@
-<section class="vh-100">
-  <div class="container py-5 h-100">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-        <div class="card bg-dark text-white">
-          <div class="card-body p-5 text-center">
-            <div class="mb-md-5 mt-md-4 pb-5">
-              <h2 class="fw-bold mb-2 text-uppercase">Register</h2>
-              <p class="text-white-50 mb-5">Please enter your details</p>
-              <form (ngSubmit)="doRegister()" id="form">
-                <div class="form-outline form-white mb-4">
-                  <div class="form-group">
-                    <label class="form-label" for="emailInput">E-mail</label>
-                    <input [(ngModel)]="email" autocomplete="username" class="form-control form-control-lg"
-                           id="emailInput"
-                           name="email" placeholder="user@mail.com"
-                           type="email">
-                  </div>
-                </div>
-                <div class="form-outline form-white mb-4">
-                  <div class="form-group">
-                    <label class="form-label" for="firstNameInput">First Name</label>
-                    <input [(ngModel)]="firstName" autocomplete="given-name" class="form-control form-control-lg"
-                           id="firstNameInput" name="firstName"
-                           placeholder="First Name"
-                           type="text">
-                  </div>
-                </div>
-                <div class="form-outline form-white mb-4">
-                  <div class="form-group">
-                    <label class="form-label" for="lastNameInput">Last Name</label>
-                    <input [(ngModel)]="lastName" autocomplete="family-name" class="form-control form-control-lg"
-                           id="lastNameInput" name="lastName"
-                           placeholder="Last Name"
-                           type="text">
-                  </div>
-                </div>
-                <div class="form-outline form-white mb-4">
-                  <div class="form-group">
-                    <label class="form-label" for="passwordInput">Password</label>
-                    <input [(ngModel)]="password" autocomplete="new-password" class="form-control form-control-lg"
-                           id="passwordInput" name="password"
-                           placeholder="Password"
-                           type="password">
-                  </div>
-                </div>
-                <div class="form-outline form-white mb-4">
-                  <div class="form-group">
-                    <label class="form-label" for="confirmPasswordInput">Confirm Password</label>
-                    <input [(ngModel)]="confirmPassword" class="form-control form-control-lg" id="confirmPasswordInput"
-                           name="confirmPassword"
-                           placeholder="Confirm Password"
-                           type="password">
-                  </div>
-                </div>
-                <button class="btn btn-outline-light btn-lg px-5" id="submitButton" type="submit">Register</button>
-              </form>
+<main>
+  <div class="container">
+
+    <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+            <div class="d-flex justify-content-center py-4">
+              <a class="logo d-flex align-items-center w-auto" routerLink="/">
+                <img alt="" src="assets/img/logo.png">
+                <span class="d-none d-lg-block">Clipboard</span>
+              </a>
             </div>
-            <div>
-              <p class="mb-0">Already have an account? <a class="text-white-50 fw-bold" routerLink="/login">Login</a>
-              </p>
+            <div class="card mb-3">
+              <div class="card-body">
+                <div class="pt-4 pb-2">
+                  <h5 class="card-title text-center pb-0 fs-4">Create an Account</h5>
+                  <p class="text-center small">Enter your personal details to create account</p>
+                </div>
+                <form class="row g-3 needs-validation" novalidate>
+                  <div class="col-12">
+                    <label class="form-label" for="yourName">Your Name</label>
+                    <input class="form-control" id="yourName" name="name" required type="text">
+                    <div class="invalid-feedback">Please, enter your name!</div>
+                  </div>
+                  <div class="col-12">
+                    <label class="form-label" for="yourEmail">Your Email</label>
+                    <input class="form-control" id="yourEmail" name="email" required type="email">
+                    <div class="invalid-feedback">Please enter a valid Email adddress!</div>
+                  </div>
+                  <div class="col-12">
+                    <label class="form-label" for="yourPassword">Password</label>
+                    <input class="form-control" id="yourPassword" name="password" required type="password">
+                    <div class="invalid-feedback">Please enter your password!</div>
+                  </div>
+                  <div class="col-12">
+                    <label class="form-label" for="yourConfirmPassword">Confirm Password</label>
+                    <input class="form-control" id="yourConfirmPassword" name="confirmPassword" required
+                           type="password">
+                    <div class="invalid-feedback">Please confirm your password!</div>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-check">
+                      <input class="form-check-input" id="acceptTerms" name="terms" required type="checkbox" value="">
+                      <label class="form-check-label" for="acceptTerms">I agree and accept the <a href="#">terms and
+                        conditions</a></label>
+                      <div class="invalid-feedback">You must agree before submitting.</div>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <button class="btn btn-primary w-100">Create Account</button>
+                  </div>
+                  <div class="col-12">
+                    <p class="small mb-0">Already have an account? <a routerLink="/login">Log in</a></p>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   </div>
-</section>
+</main>
+
+<a class="back-to-top d-flex align-items-center justify-content-center" href="#"><i
+  class="bi bi-arrow-up-short"></i></a>
