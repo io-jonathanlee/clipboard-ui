@@ -16,6 +16,12 @@ import {HomeComponent} from './components/pages/home/home.component';
 import {ProfileComponent} from './components/pages/users/profile/profile.component';
 import {CookieService} from 'ngx-cookie-service';
 import {PasswordResetComponent} from './components/pages/users/password-reset/password-reset.component';
+import { RegisterConfirmComponent } from './components/pages/users/register-confirm/register-confirm.component';
+import { ViewOrganizationsWhereMemberComponent } from './components/pages/organizations/view-organizations-where-member/view-organizations-where-member.component';
+import { ViewOrganizationComponent } from './components/pages/organizations/view-organization/view-organization.component';
+import { ViewDeliveriesComponent } from './components/pages/deliveries/view-deliveries/view-deliveries.component';
+import { LandingPageComponent } from './components/pages/landing-page/landing-page.component';
+import { AdminPanelComponent } from './components/pages/admin-panel/admin-panel.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +35,12 @@ import {PasswordResetComponent} from './components/pages/users/password-reset/pa
     ErrorForbiddenComponent,
     ErrorNotFoundComponent,
     PasswordResetComponent,
+    RegisterConfirmComponent,
+    ViewOrganizationsWhereMemberComponent,
+    ViewOrganizationComponent,
+    ViewDeliveriesComponent,
+    LandingPageComponent,
+    AdminPanelComponent,
   ],
   imports: [
     BrowserModule,

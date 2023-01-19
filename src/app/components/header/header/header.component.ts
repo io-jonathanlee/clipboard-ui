@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../../services/auth/auth.service';
 
 @Component({
@@ -9,8 +9,13 @@ import {AuthService} from '../../../services/auth/auth.service';
 /**
  * Header component.
  */
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
   isLoggedIn: boolean = false;
+  loggedInUsername: string = 'John Doe';
+
+  ngOnInit() {
+    this.isLoggedIn = this.authService.isAuthenticated();
+  }
 
   /**
    * Standard constructor.
