@@ -1,6 +1,5 @@
 <main>
   <div class="container">
-
     <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
       <div class="container">
         <div class="row justify-content-center">
@@ -17,38 +16,37 @@
                   <h5 class="card-title text-center pb-0 fs-4">Create an Account</h5>
                   <p class="text-center small">Enter your personal details to create account</p>
                 </div>
-                <form class="row g-3 needs-validation" novalidate>
+                <form (ngSubmit)="doRegister()" class="row g-3 needs-validation" novalidate>
                   <div class="col-12">
-                    <label class="form-label" for="yourName">Your Name</label>
-                    <input class="form-control" id="yourName" name="name" required type="text">
-                    <div class="invalid-feedback">Please, enter your name!</div>
+                    <label class="form-label" for="yourFirstName">First Name</label>
+                    <input [(ngModel)]="firstName" class="form-control" id="yourFirstName" name="firstName" required type="text">
                   </div>
                   <div class="col-12">
-                    <label class="form-label" for="yourEmail">Your Email</label>
-                    <input class="form-control" id="yourEmail" name="email" required type="email">
-                    <div class="invalid-feedback">Please enter a valid Email adddress!</div>
+                    <label class="form-label" for="yourLastName">Last Name</label>
+                    <input [(ngModel)]="lastName" class="form-control" id="yourLastName" name="lastName" required type="text">
+                  </div>
+                  <div class="col-12">
+                    <label class="form-label" for="yourEmail">E-mail Address</label>
+                    <input [(ngModel)]="email" class="form-control" id="yourEmail" name="email" required type="email">
                   </div>
                   <div class="col-12">
                     <label class="form-label" for="yourPassword">Password</label>
-                    <input class="form-control" id="yourPassword" name="password" required type="password">
-                    <div class="invalid-feedback">Please enter your password!</div>
+                    <input [(ngModel)]="password" class="form-control" id="yourPassword" name="password" required type="password">
                   </div>
                   <div class="col-12">
                     <label class="form-label" for="yourConfirmPassword">Confirm Password</label>
-                    <input class="form-control" id="yourConfirmPassword" name="confirmPassword" required
+                    <input [(ngModel)]="confirmPassword" class="form-control" id="yourConfirmPassword" name="confirmPassword" required
                            type="password">
-                    <div class="invalid-feedback">Please confirm your password!</div>
                   </div>
                   <div class="col-12">
                     <div class="form-check">
                       <input class="form-check-input" id="acceptTerms" name="terms" required type="checkbox" value="">
                       <label class="form-check-label" for="acceptTerms">I agree and accept the <a href="#">terms and
                         conditions</a></label>
-                      <div class="invalid-feedback">You must agree before submitting.</div>
                     </div>
                   </div>
                   <div class="col-12">
-                    <button class="btn btn-primary w-100">Create Account</button>
+                    <button class="btn btn-primary w-100" type="submit">Create Account</button>
                   </div>
                   <div class="col-12">
                     <p class="small mb-0">Already have an account? <a routerLink="/login">Log in</a></p>
@@ -62,6 +60,3 @@
     </section>
   </div>
 </main>
-
-<a class="back-to-top d-flex align-items-center justify-content-center" href="#"><i
-  class="bi bi-arrow-up-short"></i></a>
