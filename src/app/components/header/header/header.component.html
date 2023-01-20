@@ -194,6 +194,26 @@
       <li class="nav-item dropdown pe-3">
 
         <a class="nav-link nav-profile d-flex align-items-center pe-0" data-bs-toggle="dropdown" href="#">
+          <span class="d-none d-md-block dropdown-toggle ps-2">Select Organization ({{currentOrganization.name}})</span>
+        </a><!-- End Profile Iamge Icon -->
+
+        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+          <div *ngFor="let organization of availableOrganizations">
+            <li>
+              <button (click)="updateCurrentOrganization(organization)" class="dropdown-item d-flex align-items-center">
+                <i class="bi bi-person"></i>
+                <span>{{organization.name}}</span>
+              </button>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+          </div>
+        </ul><!-- End Profile Dropdown Items -->
+      </li><!-- End Profile Nav -->
+      <li class="nav-item dropdown pe-3">
+
+        <a class="nav-link nav-profile d-flex align-items-center pe-0" data-bs-toggle="dropdown" href="#">
           <span class="d-none d-md-block dropdown-toggle ps-2">{{loggedInUsername}}</span>
         </a><!-- End Profile Iamge Icon -->
 
@@ -226,7 +246,7 @@
           </li>
 
           <li>
-            <button class="dropdown-item d-flex align-items-center" (click)="doLogout()">
+            <button (click)="doLogout()" class="dropdown-item d-flex align-items-center">
               <i class="bi bi-box-arrow-right"></i>
               <span>Sign Out</span>
             </button>

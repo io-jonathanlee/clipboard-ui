@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {EventEmitter, Injectable, Output} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {OrganizationDto} from '../../dtos/OrganizationDto';
@@ -11,7 +11,30 @@ import {OrganizationDto} from '../../dtos/OrganizationDto';
  * @author Jonathan Lee <jonathan.lee.devel@gmail.com>
  */
 export class OrganizationService {
+  private static readonly ORGANIZATION_DATA_KEY: string = 'organizationInfo';
+
+  @Output() currentOrganizationDtoEventEmitter: EventEmitter<OrganizationDto> = new EventEmitter<OrganizationDto>();
+
   constructor(private httpClient: HttpClient) {
+  }
+
+  public currentOrganization(): OrganizationDto | null {
+    const organizationData = localStorage.getItem(OrganizationService.ORGANIZATION_DATA_KEY);
+    if (organizationData) {
+      const organization = JSON.parse(organizationData);
+      this.currentOrganizationDtoEventEmitter.next(organization);
+      return organization;
+    }
+    return null;
+  }
+
+  public getCurrentOrganization(): Observable<OrganizationDto> {
+    return this.currentOrganizationDtoEventEmitter;
+  }
+
+  public setCurrentOrganization(organization: OrganizationDto) {
+    localStorage.setItem(OrganizationService.ORGANIZATION_DATA_KEY, JSON.stringify(organization));
+    this.currentOrganizationDtoEventEmitter.next(organization);
   }
 
   getOrganizationsWhereMember(): Observable<OrganizationDto[]> {
