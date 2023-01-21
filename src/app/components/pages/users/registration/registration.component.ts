@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
 import {RegistrationService} from '../../../../services/registration/registration.service';
-import {RegistrationDto} from '../../../../dtos/RegistrationDto';
 import {ModalService} from '../../../../services/modal/modal.service';
 import {Router} from '@angular/router';
+import {RegistrationDto} from '../../../../dtos/users/RegistrationDto';
 
 @Component({
   selector: 'app-registration',
@@ -19,6 +19,7 @@ export class RegistrationComponent {
   lastName: string = '';
   password: string = '';
   confirmPassword: string = '';
+  acceptTermsAndConditions: boolean = false;
 
   /**
    * Standard constructor.
@@ -41,6 +42,7 @@ export class RegistrationComponent {
       lastName: this.lastName,
       password: this.password,
       confirmPassword: this.confirmPassword,
+      acceptTermsAndConditions: this.acceptTermsAndConditions,
     };
 
     this.registrationService

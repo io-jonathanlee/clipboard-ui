@@ -28,6 +28,7 @@ import {LandingPageComponent} from './components/pages/landing-page/landing-page
 import {AdminPanelComponent} from './components/pages/admin-panel/admin-panel.component';
 import {ViewSuppliersComponent} from './components/pages/suppliers/view-suppliers/view-suppliers.component';
 import {ViewOrdersComponent} from './components/pages/orders/view-orders/view-orders.component';
+import { PasswordResetConfirmComponent } from './components/pages/users/password-reset-confirm/password-reset-confirm.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import {ViewOrdersComponent} from './components/pages/orders/view-orders/view-or
     AdminPanelComponent,
     ViewSuppliersComponent,
     ViewOrdersComponent,
+    PasswordResetConfirmComponent,
   ],
   imports: [
     BrowserModule,

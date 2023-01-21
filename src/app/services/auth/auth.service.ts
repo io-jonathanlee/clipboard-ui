@@ -2,8 +2,9 @@ import {EventEmitter, Injectable, Output} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {Observable} from 'rxjs';
-import {LoginDto} from '../../dtos/LoginDto';
 import {ModalService} from '../modal/modal.service';
+import {OrganizationService} from '../organization/organization.service';
+import {LoginDto} from '../../dtos/users/LoginDto';
 
 @Injectable({
   providedIn: 'root',
@@ -22,11 +23,13 @@ export class AuthService {
    * @param {HttpClient} httpClient used to access backend API
    * @param {Router} router used to route based on login success/failure
    * @param {ModalService} modalService used to display login/logout success/failure
+   * @param {OrganizationService} organizationService used to clear organization info on logout
    */
   constructor(
     private httpClient: HttpClient,
     private router: Router,
     private modalService: ModalService,
+    private organizationService: OrganizationService,
   ) {
   }
 
@@ -106,6 +109,7 @@ export class AuthService {
    */
   logout(showMessage: boolean) {
     this.deleteUserInfo();
+    this.organizationService.deleteOrganizationInfo();
     this.isLoggedIn.next(false);
     this.router.navigate(['/login']).then((_) => {
     });

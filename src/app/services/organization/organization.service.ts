@@ -37,6 +37,10 @@ export class OrganizationService {
     this.currentOrganizationDtoEventEmitter.next(organization);
   }
 
+  public deleteOrganizationInfo() {
+    localStorage.removeItem(OrganizationService.ORGANIZATION_DATA_KEY);
+  }
+
   getOrganizationsWhereMember(): Observable<OrganizationDto[]> {
     return this.httpClient
         .get<OrganizationDto[]>('/api/organizations/where-member');

@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {PasswordService} from '../../../../services/password/password.service';
 
 @Component({
   selector: 'app-password-reset',
@@ -10,5 +11,12 @@ import {Component} from '@angular/core';
  * @author Jonathan Lee <jonathan.lee.devel@gmail.com>
  */
 export class PasswordResetComponent {
+  email: string = '';
 
+  constructor(private passwordService: PasswordService) {
+  }
+
+  doRequestPasswordReset() {
+    this.passwordService.requestResetPassword(this.email);
+  }
 }

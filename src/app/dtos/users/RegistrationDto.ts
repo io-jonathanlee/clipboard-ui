@@ -4,4 +4,6 @@ export interface RegistrationDto {
   lastName: string;
   password: string;
   confirmPassword: string;
+
+  acceptTermsAndConditions: boolean;
 }

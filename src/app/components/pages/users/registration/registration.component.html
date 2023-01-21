@@ -19,11 +19,13 @@
                 <form (ngSubmit)="doRegister()" class="row g-3 needs-validation" novalidate>
                   <div class="col-12">
                     <label class="form-label" for="yourFirstName">First Name</label>
-                    <input [(ngModel)]="firstName" class="form-control" id="yourFirstName" name="firstName" required type="text">
+                    <input [(ngModel)]="firstName" class="form-control" id="yourFirstName" name="firstName" required
+                           type="text">
                   </div>
                   <div class="col-12">
                     <label class="form-label" for="yourLastName">Last Name</label>
-                    <input [(ngModel)]="lastName" class="form-control" id="yourLastName" name="lastName" required type="text">
+                    <input [(ngModel)]="lastName" class="form-control" id="yourLastName" name="lastName" required
+                           type="text">
                   </div>
                   <div class="col-12">
                     <label class="form-label" for="yourEmail">E-mail Address</label>
@@ -31,17 +33,23 @@
                   </div>
                   <div class="col-12">
                     <label class="form-label" for="yourPassword">Password</label>
-                    <input [(ngModel)]="password" class="form-control" id="yourPassword" name="password" required type="password">
+                    <input [(ngModel)]="password" class="form-control" id="yourPassword" name="password" required
+                           type="password">
                   </div>
                   <div class="col-12">
                     <label class="form-label" for="yourConfirmPassword">Confirm Password</label>
-                    <input [(ngModel)]="confirmPassword" class="form-control" id="yourConfirmPassword" name="confirmPassword" required
+                    <input [(ngModel)]="confirmPassword" class="form-control" id="yourConfirmPassword"
+                           name="confirmPassword" required
                            type="password">
                   </div>
                   <div class="col-12">
                     <div class="form-check">
-                      <input class="form-check-input" id="acceptTerms" name="terms" required type="checkbox" value="">
-                      <label class="form-check-label" for="acceptTerms">I agree and accept the <a href="#">terms and
+                      <input [(ngModel)]="acceptTermsAndConditions" class="form-check-input" id="acceptTerms"
+                             name="terms" required type="checkbox" value="">
+                      <label class="form-check-label" for="acceptTerms">I agree and accept the <a
+                        href="https://github.com/io-jonathanlee/clipboard-api-java/blob/main/LICENSE"
+                        target="_blank">terms
+                        and
                         conditions</a></label>
                     </div>
                   </div>

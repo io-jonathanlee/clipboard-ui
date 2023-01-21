@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {RegistrationDto} from '../../dtos/RegistrationDto';
-import {RegistrationStatusDto} from '../../dtos/RegistrationStatusDto';
 import {Observable} from 'rxjs';
+import {RegistrationDto} from '../../dtos/users/RegistrationDto';
+import {RegistrationStatusDto} from '../../dtos/users/RegistrationStatusDto';
 
 @Injectable({
   providedIn: 'root',

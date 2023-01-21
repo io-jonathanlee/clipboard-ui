@@ -19,6 +19,9 @@ import {LandingPageComponent} from './components/pages/landing-page/landing-page
 import {AdminPanelComponent} from './components/pages/admin-panel/admin-panel.component';
 import {ViewOrdersComponent} from './components/pages/orders/view-orders/view-orders.component';
 import {ViewSuppliersComponent} from './components/pages/suppliers/view-suppliers/view-suppliers.component';
+import {
+  PasswordResetConfirmComponent,
+} from './components/pages/users/password-reset-confirm/password-reset-confirm.component';
 
 export const appRoutes: Routes = [
   {path: '', component: LandingPageComponent},
@@ -27,6 +30,7 @@ export const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register/confirm/:tokenValue', component: RegisterConfirmComponent},
   {path: 'password/reset', component: PasswordResetComponent},
+  {path: 'password/reset/confirm/:passwordResetTokenValue', component: PasswordResetConfirmComponent},
   {path: 'organizations/memberships', component: ViewOrganizationsWhereMemberComponent, canActivate: [AuthGuard]},
   {path: 'organizations/view', component: ViewOrganizationComponent, canActivate: [AuthGuard]},
   {path: 'orders', component: ViewOrdersComponent, canActivate: [AuthGuard]},
