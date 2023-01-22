@@ -18,18 +18,31 @@ export class PasswordResetConfirmComponent implements OnInit {
   confirmPassword: string = '';
   passwordResetTokenValue: string = '';
 
+  /**
+   * Standard constructor.
+   * @param {ActivatedRoute} route used to access path variables
+   * @param {HttpClient} httpClient used to access API
+   * @param {ModalService} modalService used to display API responses
+   * @param {Router} router used to navigate accordingly
+   */
   constructor(private route: ActivatedRoute,
               private httpClient: HttpClient,
               private modalService: ModalService,
               private router: Router) {
   }
 
+  /**
+   * Init method.
+   */
   ngOnInit() {
     this.route.params.subscribe((params) => {
       this.passwordResetTokenValue = params['passwordResetTokenValue'];
     });
   }
 
+  /**
+   * Method which actually performs the confirmation of password reset via the API.
+   */
   doConfirmPasswordReset() {
     const body = {
       tokenValue: this.passwordResetTokenValue,
