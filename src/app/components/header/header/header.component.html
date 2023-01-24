@@ -7,6 +7,7 @@
       <span class="d-none d-lg-block">Clipboard</span>
     </a>
     <a *ngIf="isLoggedIn" class="d-flex align-items-center" routerLink="/home">Home</a>
+    <a *ngIf="isLoggedIn" class="d-flex align-items-center" id="organizationNavLink" routerLink="/organizations">Organizations</a>
   </div><!-- End Logo -->
 
   <nav class="header-nav ms-auto">
@@ -18,7 +19,7 @@
 
         <a class="nav-link nav-profile d-flex align-items-center pe-0" data-bs-toggle="dropdown" href="#">
           <span class="d-none d-md-block dropdown-toggle ps-2">Anonymous</span>
-        </a><!-- End Profile Iamge Icon -->
+        </a><!-- End Profile Image Icon -->
 
         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
           <li class="dropdown-header">
@@ -134,7 +135,9 @@
             <li>
               <button (click)="updateCurrentOrganization(organization)" class="dropdown-item d-flex align-items-center">
                 <i class="bi bi-person"></i>
-                <span>{{organization.name}}</span>
+                <span *ngIf="organization.administratorEmails.includes(loggedInUsername)">{{organization.name}}
+                  (Admin)</span>
+                <span *ngIf="!organization.administratorEmails.includes(loggedInUsername)">{{organization.name}}</span>
               </button>
             </li>
             <li>

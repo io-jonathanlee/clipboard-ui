@@ -14,7 +14,7 @@ import {OrganizationService} from '../../../services/organization/organization.s
 export class HomeComponent implements OnInit {
   currentOrganization: OrganizationDto = {
     id: '-1',
-    name: 'Error Loading Current Organization',
+    name: 'No Organization Selected',
     memberEmails: [],
     administratorEmails: [],
   };

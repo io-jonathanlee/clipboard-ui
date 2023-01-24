@@ -1,6 +1,7 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {DeliveryDto} from '../../../../dtos/deliveries/DeliveryDto';
 import {ModalService} from '../../../../services/modal/modal.service';
+import {DeliveryService} from '../../../../services/delivery/delivery.service';
 
 @Component({
   selector: 'app-view-deliveries',
@@ -10,25 +11,18 @@ import {ModalService} from '../../../../services/modal/modal.service';
 /**
  * View deliveries component.
  */
-export class ViewDeliveriesComponent {
-  deliveries: DeliveryDto[] = [
-    {
-      id: '1234',
-      title: 'Marie Hardiman',
-      details: 'Salmon Dinner',
-      address: 'Headford Road, H81 E16H5',
-      delivered: false,
-    },
-    {
-      id: '4567',
-      title: 'Jack Rehn',
-      details: 'Roast Beef Dinner',
-      address: 'Headford Town, H99 E3455',
-      delivered: false,
-    },
-  ];
+export class ViewDeliveriesComponent implements OnInit {
+  deliveries: DeliveryDto[] = [];
 
-  constructor(private modalService: ModalService) {
+  constructor(private deliveryService: DeliveryService,
+              private modalService: ModalService) {
+  }
+
+  ngOnInit() {
+    this.deliveryService.getDeliveries()
+        .subscribe((deliveries) => {
+          this.deliveries = deliveries;
+        });
   }
 
   markOrUnmarkDeliveryAsDelivered(deliveryId: string) {

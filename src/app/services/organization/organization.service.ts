@@ -41,8 +41,8 @@ export class OrganizationService {
     localStorage.removeItem(OrganizationService.ORGANIZATION_DATA_KEY);
   }
 
-  getOrganizationsWhereMember(): Observable<OrganizationDto[]> {
+  getOrganizationWhereInvolved(): Observable<OrganizationDto[]> {
     return this.httpClient
-        .get<OrganizationDto[]>('/api/organizations/where-member');
+        .get<OrganizationDto[]>('/api/organizations/where-involved');
   }
 }

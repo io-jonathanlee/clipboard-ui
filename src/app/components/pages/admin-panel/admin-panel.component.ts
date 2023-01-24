@@ -9,5 +9,4 @@ import {Component} from '@angular/core';
  * Admin panel component.
  */
 export class AdminPanelComponent {
-
 }

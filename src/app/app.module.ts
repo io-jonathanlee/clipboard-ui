@@ -14,21 +14,26 @@ import {RegistrationComponent} from './components/pages/users/registration/regis
 import {LoginComponent} from './components/pages/users/login/login.component';
 import {HomeComponent} from './components/pages/home/home.component';
 import {ProfileComponent} from './components/pages/users/profile/profile.component';
-import {CookieService} from 'ngx-cookie-service';
 import {PasswordResetComponent} from './components/pages/users/password-reset/password-reset.component';
 import {RegisterConfirmComponent} from './components/pages/users/register-confirm/register-confirm.component';
 import {
-  ViewOrganizationsWhereMemberComponent
-} from './components/pages/organizations/view-organizations-where-member/view-organizations-where-member.component';
-import {
-  ViewOrganizationComponent
+  ViewOrganizationComponent,
 } from './components/pages/organizations/view-organization/view-organization.component';
 import {ViewDeliveriesComponent} from './components/pages/deliveries/view-deliveries/view-deliveries.component';
 import {LandingPageComponent} from './components/pages/landing-page/landing-page.component';
 import {AdminPanelComponent} from './components/pages/admin-panel/admin-panel.component';
 import {ViewSuppliersComponent} from './components/pages/suppliers/view-suppliers/view-suppliers.component';
 import {ViewOrdersComponent} from './components/pages/orders/view-orders/view-orders.component';
-import { PasswordResetConfirmComponent } from './components/pages/users/password-reset-confirm/password-reset-confirm.component';
+import {
+  PasswordResetConfirmComponent,
+} from './components/pages/users/password-reset-confirm/password-reset-confirm.component';
+import {OrganizationInterceptor} from './interceptors/organization/organization.interceptor';
+import {
+  ViewOrganizationsWhereInvolvedComponent,
+} from './components/pages/organizations/view-organizations-where-involved/view-organizations-where-involved.component';
+import { RequestToJoinOrganizationComponent } from './components/pages/organizations/request-to-join-organization/request-to-join-organization.component';
+import { CreateOrganizationComponent } from './components/pages/organizations/create-organization/create-organization.component';
+import { OrganizationsComponent } from './components/pages/organizations/organizations/organizations.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +48,6 @@ import { PasswordResetConfirmComponent } from './components/pages/users/password
     ErrorNotFoundComponent,
     PasswordResetComponent,
     RegisterConfirmComponent,
-    ViewOrganizationsWhereMemberComponent,
     ViewOrganizationComponent,
     ViewDeliveriesComponent,
     LandingPageComponent,
@@ -51,6 +55,10 @@ import { PasswordResetConfirmComponent } from './components/pages/users/password
     ViewSuppliersComponent,
     ViewOrdersComponent,
     PasswordResetConfirmComponent,
+    ViewOrganizationsWhereInvolvedComponent,
+    RequestToJoinOrganizationComponent,
+    CreateOrganizationComponent,
+    OrganizationsComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,10 +70,14 @@ import { PasswordResetConfirmComponent } from './components/pages/users/password
     RouterLink,
   ],
   providers: [
-    CookieService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: OrganizationInterceptor,
       multi: true,
     },
   ],

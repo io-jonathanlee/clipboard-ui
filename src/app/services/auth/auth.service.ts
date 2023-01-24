@@ -5,6 +5,7 @@ import {Observable} from 'rxjs';
 import {ModalService} from '../modal/modal.service';
 import {OrganizationService} from '../organization/organization.service';
 import {LoginDto} from '../../dtos/users/LoginDto';
+import {DEFAULT_ORGANIZATION} from '../../dtos/OrganizationDto';
 
 @Injectable({
   providedIn: 'root',
@@ -111,6 +112,7 @@ export class AuthService {
     this.deleteUserInfo();
     this.organizationService.deleteOrganizationInfo();
     this.isLoggedIn.next(false);
+    this.organizationService.setCurrentOrganization(DEFAULT_ORGANIZATION);
     this.router.navigate(['/login']).then((_) => {
     });
     if (showMessage) {

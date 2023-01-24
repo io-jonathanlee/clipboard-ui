@@ -1,14 +1,16 @@
 import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree} from '@angular/router';
 import {Observable} from 'rxjs';
-import {AuthService} from '../services/auth/auth.service';
-import {ModalService} from '../services/modal/modal.service';
+import {AuthService} from '../../services/auth/auth.service';
+import {ModalService} from '../../services/modal/modal.service';
 
 @Injectable({
   providedIn: 'root',
 })
 /**
- * AuthGuard.
+ * Auth Guard.
+ *
+ * @author Jonathan Lee <jonathan.lee.devel@gmail.com>
  */
 export class AuthGuard implements CanActivate {
   private isLoggedIn: boolean = false;
@@ -37,7 +39,6 @@ export class AuthGuard implements CanActivate {
   canActivate(
       route: ActivatedRouteSnapshot,
       state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    console.log(`this.isLoggedIn = ${this.isLoggedIn}`);
     if (!this.authService.isAuthenticated()) {
       this.modalService.showModal(
           'Authentication Error',

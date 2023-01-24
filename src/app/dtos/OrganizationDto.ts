@@ -4,3 +4,10 @@ export interface OrganizationDto {
   memberEmails: string[];
   administratorEmails: string[];
 }
+
+export const DEFAULT_ORGANIZATION: OrganizationDto = {
+  id: '-1',
+  name: 'No Organization Selected',
+  memberEmails: [],
+  administratorEmails: [],
+};
