@@ -41,8 +41,20 @@ export class OrganizationService {
     localStorage.removeItem(OrganizationService.ORGANIZATION_DATA_KEY);
   }
 
-  getOrganizationsWhereMember(): Observable<OrganizationDto[]> {
+  getOrganizationWhereInvolved(): Observable<OrganizationDto[]> {
     return this.httpClient
-        .get<OrganizationDto[]>('/api/organizations/where-member');
+        .get<OrganizationDto[]>('/api/organizations/where-involved');
+  }
+
+  createOrganization(organizationName: string) {
+    const body = {
+      name: organizationName,
+    };
+    return this.httpClient
+        .post<OrganizationDto>('/api/organizations', body);
+  }
+
+  getOrganizationById(organizationId: string): Observable<OrganizationDto> {
+    return this.httpClient.get<OrganizationDto>(`/api/organizations/${organizationId}`);
   }
 }

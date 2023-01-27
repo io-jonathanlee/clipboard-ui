@@ -104,6 +104,10 @@ export class ErrorInterceptor implements HttpInterceptor {
     if (error.status === 409) {
       this.modalService.showModal('Request Error', 'Entity already exists');
     }
+
+    if (error.status === 500) {
+      this.modalService.showModal('Request Error', 'A server error has occurred');
+    }
     throw error;
   }
 }

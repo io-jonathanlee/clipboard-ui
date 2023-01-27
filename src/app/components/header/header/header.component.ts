@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../../services/auth/auth.service';
-import {OrganizationDto} from '../../../dtos/OrganizationDto';
+import {DEFAULT_ORGANIZATION, OrganizationDto} from '../../../dtos/OrganizationDto';
 import {OrganizationService} from '../../../services/organization/organization.service';
 
 @Component({
@@ -12,28 +12,11 @@ import {OrganizationService} from '../../../services/organization/organization.s
  * Header component.
  */
 export class HeaderComponent implements OnInit {
+  isMobile: boolean = false;
   isLoggedIn: boolean = false;
   loggedInUsername: string = 'John Doe';
-  availableOrganizations: OrganizationDto[] = [
-    {
-      id: '-1',
-      name: 'Solas',
-      memberEmails: ['jonathan.lee.devel@gmail.com'],
-      administratorEmails: ['jonathan.lee.devel@gmail.com'],
-    },
-    {
-      id: '-2',
-      name: 'Heenaghans',
-      memberEmails: ['jonathan.lee.devel@gmail.com'],
-      administratorEmails: ['jonathan.lee.devel@gmail.com'],
-    },
-  ];
-  currentOrganization: OrganizationDto = {
-    id: '-1',
-    name: 'Error Loading Current Organization',
-    memberEmails: [],
-    administratorEmails: [],
-  };
+  availableOrganizations: OrganizationDto[] = [];
+  currentOrganization: OrganizationDto = DEFAULT_ORGANIZATION;
 
   /**
    * Standard constructor.
@@ -48,10 +31,35 @@ export class HeaderComponent implements OnInit {
     this.organizationService.getCurrentOrganization().subscribe((currentOrganization) => {
       this.currentOrganization = currentOrganization;
     });
+    this.organizationService.getOrganizationWhereInvolved()
+        .subscribe((organizations) => {
+          this.availableOrganizations = organizations;
+        });
+    const userInfo = this.authService.getUserInfo();
+    if (userInfo) {
+      this.loggedInUsername = userInfo.username;
+    }
   }
 
+  /**
+   * Public access to ngOnInit in order to reload data on login/logout.
+   */
+  public invokeNgOnInit() {
+    this.ngOnInit();
+  }
+
+  /**
+   * Init method.
+   */
   ngOnInit() {
+    if (window.screen.width <= 500) {
+      this.isMobile = true;
+    }
     this.isLoggedIn = this.authService.isAuthenticated();
+    const userInfo = this.authService.getUserInfo();
+    if (userInfo) {
+      this.loggedInUsername = userInfo.username;
+    }
     const currentOrganization = this.organizationService.currentOrganization();
     if (currentOrganization) {
       this.currentOrganization = currentOrganization;
