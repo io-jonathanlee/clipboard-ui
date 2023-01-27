@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {OrganizationDto} from '../../../dtos/OrganizationDto';
+import {DEFAULT_ORGANIZATION, OrganizationDto} from '../../../dtos/OrganizationDto';
 import {OrganizationService} from '../../../services/organization/organization.service';
 
 @Component({
@@ -12,12 +12,7 @@ import {OrganizationService} from '../../../services/organization/organization.s
  * @author Jonathan Lee <jonathan.lee.devel@gmail.com>
  */
 export class HomeComponent implements OnInit {
-  currentOrganization: OrganizationDto = {
-    id: '-1',
-    name: 'No Organization Selected',
-    memberEmails: [],
-    administratorEmails: [],
-  };
+  currentOrganization: OrganizationDto = DEFAULT_ORGANIZATION;
 
   constructor(private organizationService: OrganizationService) {
   }

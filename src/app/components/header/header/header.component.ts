@@ -12,6 +12,7 @@ import {OrganizationService} from '../../../services/organization/organization.s
  * Header component.
  */
 export class HeaderComponent implements OnInit {
+  isMobile: boolean = false;
   isLoggedIn: boolean = false;
   loggedInUsername: string = 'John Doe';
   availableOrganizations: OrganizationDto[] = [];
@@ -40,8 +41,25 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+  /**
+   * Public access to ngOnInit in order to reload data on login/logout.
+   */
+  public invokeNgOnInit() {
+    this.ngOnInit();
+  }
+
+  /**
+   * Init method.
+   */
   ngOnInit() {
+    if (window.screen.width <= 500) {
+      this.isMobile = true;
+    }
     this.isLoggedIn = this.authService.isAuthenticated();
+    const userInfo = this.authService.getUserInfo();
+    if (userInfo) {
+      this.loggedInUsername = userInfo.username;
+    }
     const currentOrganization = this.organizationService.currentOrganization();
     if (currentOrganization) {
       this.currentOrganization = currentOrganization;
