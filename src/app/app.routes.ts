@@ -30,6 +30,7 @@ import {
   CreateOrganizationComponent,
 } from './components/pages/organizations/create-organization/create-organization.component';
 import {OrganizationsComponent} from './components/pages/organizations/organizations/organizations.component';
+import {CreateDeliveryComponent} from './components/pages/deliveries/create-delivery/create-delivery.component';
 
 export const appRoutes: Routes = [
   {path: '', component: LandingPageComponent},
@@ -47,6 +48,7 @@ export const appRoutes: Routes = [
   {path: 'orders', component: ViewOrdersComponent, canActivate: [AuthGuard]},
   {path: 'suppliers', component: ViewSuppliersComponent, canActivate: [AuthGuard]},
   {path: 'deliveries', component: ViewDeliveriesComponent, canActivate: [AuthGuard, OrganizationGuard]},
+  {path: 'deliveries/create', component: CreateDeliveryComponent, canActivate: [AuthGuard, OrganizationGuard]},
   {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
   {path: 'admin-panel', component: AdminPanelComponent, canActivate: [AuthGuard]},
   {path: 'error/not-found', component: ErrorNotFoundComponent},

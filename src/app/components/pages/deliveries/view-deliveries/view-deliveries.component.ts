@@ -30,11 +30,23 @@ export class ViewDeliveriesComponent implements OnInit {
     const markDeliveredButton = document.getElementById(`button_${deliveryId}`);
     if (deliveredSpan && markDeliveredButton) {
       if (deliveredSpan.style.visibility === 'hidden') {
-        deliveredSpan.style.visibility = 'visible';
-        markDeliveredButton.innerHTML = 'Unmark Delivered';
+        this.deliveryService.markDeliveryAsDelivered(deliveryId).subscribe((delivery) => {
+          if (delivery.delivered) {
+            deliveredSpan.style.visibility = 'visible';
+            markDeliveredButton.innerHTML = 'Unmark Delivered';
+          } else {
+            this.modalService.showModal('Request Error', 'An unknown error has occurred, please refresh the page');
+          }
+        });
       } else {
-        deliveredSpan.style.visibility = 'hidden';
-        markDeliveredButton.innerHTML = 'Mark Delivered';
+        this.deliveryService.markDeliveryAsUndelivered(deliveryId).subscribe((delivery) => {
+          if (!delivery.delivered) {
+            deliveredSpan.style.visibility = 'hidden';
+            markDeliveredButton.innerHTML = 'Mark Delivered';
+          } else {
+            this.modalService.showModal('Request Error', 'An unknown error has occurred, please refresh the page');
+          }
+        });
       }
     } else {
       this.modalService.showModal('Error', 'An unknown state error has occurred, please refresh the page');
