@@ -31,6 +31,7 @@ import {
 } from './components/pages/organizations/create-organization/create-organization.component';
 import {OrganizationsComponent} from './components/pages/organizations/organizations/organizations.component';
 import {CreateDeliveryComponent} from './components/pages/deliveries/create-delivery/create-delivery.component';
+import {ViewNotificationsComponent} from './components/pages/view-notifications/view-notifications.component';
 
 export const appRoutes: Routes = [
   {path: '', component: LandingPageComponent},
@@ -51,6 +52,7 @@ export const appRoutes: Routes = [
   {path: 'deliveries/create', component: CreateDeliveryComponent, canActivate: [AuthGuard, OrganizationGuard]},
   {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
   {path: 'admin-panel', component: AdminPanelComponent, canActivate: [AuthGuard]},
+  {path: 'notifications', component: ViewNotificationsComponent, canActivate: [AuthGuard]},
   {path: 'error/not-found', component: ErrorNotFoundComponent},
   {path: 'error/forbidden', component: ErrorForbiddenComponent},
 ];

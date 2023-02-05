@@ -35,6 +35,7 @@ import { RequestToJoinOrganizationComponent } from './components/pages/organizat
 import { CreateOrganizationComponent } from './components/pages/organizations/create-organization/create-organization.component';
 import { OrganizationsComponent } from './components/pages/organizations/organizations/organizations.component';
 import { CreateDeliveryComponent } from './components/pages/deliveries/create-delivery/create-delivery.component';
+import { ViewNotificationsComponent } from './components/pages/view-notifications/view-notifications.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { CreateDeliveryComponent } from './components/pages/deliveries/create-de
     CreateOrganizationComponent,
     OrganizationsComponent,
     CreateDeliveryComponent,
+    ViewNotificationsComponent,
   ],
   imports: [
     BrowserModule,
