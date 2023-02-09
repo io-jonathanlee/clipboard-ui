@@ -19,6 +19,8 @@ export class AuthService {
 
   @Output() isLoggedIn: EventEmitter<boolean> = new EventEmitter<boolean>();
 
+  @Output() userInfo: EventEmitter<LoginDto> = new EventEmitter<LoginDto>();
+
   /**
    * Standard constructor
    * @param {HttpClient} httpClient used to access backend API
@@ -41,9 +43,11 @@ export class AuthService {
   public isAuthenticated(): boolean {
     const userData = localStorage.getItem(AuthService.USER_DATA_KEY);
     if (userData) {
+      const parsedUserData = JSON.parse(userData);
       const successfulAuthentication =
-        JSON.parse(userData).loginStatus === 'SUCCESS';
+        parsedUserData.loginStatus === 'SUCCESS';
       this.isLoggedIn.next(successfulAuthentication);
+      this.userInfo.next(parsedUserData);
       return successfulAuthentication;
     }
     return false;
